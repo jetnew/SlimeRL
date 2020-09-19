@@ -1,0 +1,1 @@
+Logging to ppo1_selfplay
