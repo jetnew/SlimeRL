@@ -29,8 +29,7 @@ def record_game(model, env, num_episodes=5, video_filename='video.mp4'):
                 video.append_data(env.render('rgb_array'))
 
             print("score:", total_reward)
-            
-            
+
 import numpy as np
 import pandas as pd
 from ax.plot.contour import plot_contour
@@ -54,7 +53,8 @@ def hyperopt(model, params, opt_params, trials=30):
     def loss_function(p):
         m = model(params['policy'],
                   params['train_env'],
-                  **p)
+                  **p,
+                  verbose=2)
         m.learn(total_timesteps=params['timesteps'])
         reward = np.mean([evaluate(m, params['eval_env']) for _ in range(100)])
         return {
@@ -100,8 +100,7 @@ def performance_plot(experiment, best_vals):
         title="Model performance vs. # of iterations",
         ylabel="loss")
     render(best_objective_plot)
-    
-    
+
 import os
 import gym
 import slimevolleygym
@@ -151,13 +150,15 @@ def experiment(algo, policy,
                eval_freq=2_500,
                eval_episodes=100,
                record=False,
-               tag='0'):
+               tag='0',
+               best_params=None):
     """
     algo: Choose from
         a2c, acer, acktr, dqn, trpo, ppo1
     policy: Choose from
         mlp, bnn
     """
+    print("Begin experiment.")
     if algo == "a2c":
         model = A2C
     elif algo == "acer":
@@ -183,7 +184,7 @@ def experiment(algo, policy,
         policyFn = BnnPolicy
         
         
-    log_dir = f"{algo}-{policy}-{tag}"
+    log_dir = f"full/{algo}-{policy}-{tag}"
     logger.configure(folder=log_dir)
     
     env = gym.make("SlimeVolley-v0")
@@ -245,9 +246,19 @@ def experiment(algo, policy,
         },
     }
     
-    model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
-    with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
-        f.write(str(best_params))
+    if best_params is None:
+        model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
+        with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
+            f.write(str(best_params))
+    else:
+        with open(os.path.join(log_dir, best_params), 'r') as f:
+            best_params = dict(eval(f.read()))
+        model = model(params['policy'],
+                      params['train_env'],
+                      **best_params,
+                      verbose=2)
+        model.learn(total_timesteps=params['timesteps'],
+                    callback=params['eval_callback'])
 
     model.save(os.path.join(log_dir, "trained_model"))
     print("Training complete, saved to:", os.path.join(log_dir, f"trained-{algo}-{policy}-{tag}"))
@@ -266,10 +277,11 @@ def experiment(algo, policy,
     
     
 if __name__ == "__main__":
-    for i in range(20):
+    experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag="1")
+    for i in range(2,21):
         # =========================================
         # HERE IS WHERE YOU CHANGE THE CODE
         # 1. Change 'ppo' to the algorithm. [a2c, acer, acktr, dqn, gail, trpo, ppo]
         # 2. Change 'dnn' to the policy. [dnn, bnn]
-        experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag=str(i))
+        experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
         # =========================================
