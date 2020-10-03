@@ -36,8 +36,6 @@ import pandas as pd
 from ax.plot.contour import plot_contour
 from ax.plot.trace import optimization_trace_single_method
 from ax.service.managed_loop import optimize
-from ax.utils.notebook.plotting import render, init_notebook_plotting
-init_notebook_plotting()
 
 
 def evaluate(model, env, render=False):
