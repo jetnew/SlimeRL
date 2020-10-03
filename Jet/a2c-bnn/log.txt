@@ -1,0 +1,25 @@
+Logging to a2c-bnn
+----------------------------------
+| explained_variance | -3.03e+03 |
+| fps                | 19        |
+| nupdates           | 1         |
+| policy_entropy     | 1.79      |
+| total_timesteps    | 5         |
+| value_loss         | 0.00651   |
+----------------------------------
+----------------------------------
+| explained_variance | -2.17e+06 |
+| fps                | 557       |
+| nupdates           | 100       |
+| policy_entropy     | 1.79      |
+| total_timesteps    | 500       |
+| value_loss         | 0.0567    |
+----------------------------------
+----------------------------------
+| explained_variance | -1.83e+03 |
+| fps                | 629       |
+| nupdates           | 200       |
+| policy_entropy     | 1.79      |
+| total_timesteps    | 1000      |
+| value_loss         | 0.0126    |
+----------------------------------

@@ -1,0 +1,22 @@
+Logging to acer-bnn
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.0132   |
+| avg_norm_grads_f    | 0.0132   |
+| avg_norm_k          | 2.45     |
+| avg_norm_k_dot_g    | 0.0132   |
+| entropy             | 37.6     |
+| explained_variance  | -0.163   |
+| fps                 | 0        |
+| loss                | -0.38    |
+| loss_bc             | -0       |
+| loss_f              | -0.00369 |
+| loss_policy         | -0.00369 |
+| loss_q              | 3.86e-06 |
+| mean_episode_length | 0        |
+| mean_episode_reward | 0        |
+| norm_grads          | 0.00105  |
+| norm_grads_policy   | 0.000669 |
+| norm_grads_q        | 0.000812 |
+| total_timesteps     | 20       |
+----------------------------------

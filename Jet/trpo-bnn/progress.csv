@@ -1,0 +1,2 @@
+EpisodesSoFar,EpRewMean,TimestepsSoFar,optimgain,explained_variance_tdlam_before,entloss,surrgain,entropy,EpThisIter,TimeElapsed,EpLenMean,meankl
+1,-5.0,1024,0.014177803,-0.09932482242584229,0.0,0.014177803,1.7883993,1,1.6892380714416504,504.0,0.0034095426
