@@ -49,7 +49,7 @@ def evaluate(model, env, render=False):
             env.render()
     return total_reward
 
-def hyperopt(model, params, opt_params, trials=20):
+def hyperopt(model, params, opt_params, trials=10):
     def loss_function(p):
         m = model(params['policy'],
                   params['train_env'],
@@ -284,11 +284,12 @@ def experiment(algo, policy,
     
     
 if __name__ == "__main__":
-    experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag="1")
-    for i in range(2,21):
-        # =========================================
-        # HERE IS WHERE YOU CHANGE THE CODE
-        # 1. Change 'ppo' to the algorithm. [a2c, acer, acktr, dqn, gail, trpo, ppo]
-        # 2. Change 'dnn' to the policy. [dnn, bnn]
+    # ======= INSTRUCTIONS =========
+    # 1. Change 'ppo' to the algorithm. [a2c, acer, acktr, dqn, gail, trpo, ppo]
+    # 2. Change 'dnn' to the policy. [dnn, bnn]
+    
+    # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
+    experiment('ppo', 'bnn', timesteps=5_000_000, record=True, tag="1")
+    for i in range(2,11):
+        # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
         experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
-        # =========================================

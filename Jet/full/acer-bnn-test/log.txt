@@ -1,0 +1,127 @@
+Logging to full/acer-bnn-test
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.595    |
+| avg_norm_grads_f    | 0.595    |
+| avg_norm_k          | 2.45     |
+| avg_norm_k_dot_g    | 0.595    |
+| entropy             | 37.6     |
+| explained_variance  | 0.00175  |
+| fps                 | 0        |
+| loss                | -0.195   |
+| loss_bc             | -0       |
+| loss_f              | 0.178    |
+| loss_policy         | 0.178    |
+| loss_q              | 0.00634  |
+| mean_episode_length | 0        |
+| mean_episode_reward | 0        |
+| norm_grads          | 0.0596   |
+| norm_grads_policy   | 0.0479   |
+| norm_grads_q        | 0.0354   |
+| total_timesteps     | 20       |
+----------------------------------
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.588    |
+| avg_norm_grads_f    | 0.588    |
+| avg_norm_k          | 2.45     |
+| avg_norm_k_dot_g    | 0.588    |
+| entropy             | 37.6     |
+| explained_variance  | 0.0144   |
+| fps                 | 397      |
+| loss                | -0.198   |
+| loss_bc             | -0       |
+| loss_f              | 0.176    |
+| loss_policy         | 0.176    |
+| loss_q              | 0.00606  |
+| mean_episode_length | 576      |
+| mean_episode_reward | 1.09     |
+| norm_grads          | 0.0436   |
+| norm_grads_policy   | 0.031    |
+| norm_grads_q        | 0.0308   |
+| total_timesteps     | 2020     |
+----------------------------------
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.614    |
+| avg_norm_grads_f    | 0.614    |
+| avg_norm_k          | 2.45     |
+| avg_norm_k_dot_g    | 0.614    |
+| entropy             | 37.6     |
+| explained_variance  | 0.0965   |
+| fps                 | 398      |
+| loss                | -0.189   |
+| loss_bc             | -0       |
+| loss_f              | 0.184    |
+| loss_policy         | 0.184    |
+| loss_q              | 0.00627  |
+| mean_episode_length | 593      |
+| mean_episode_reward | 1.09     |
+| norm_grads          | 0.0493   |
+| norm_grads_policy   | 0.035    |
+| norm_grads_q        | 0.0348   |
+| total_timesteps     | 4020     |
+----------------------------------
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.37     |
+| avg_norm_grads_f    | 0.37     |
+| avg_norm_k          | 2.46     |
+| avg_norm_k_dot_g    | 0.372    |
+| entropy             | 37.5     |
+| explained_variance  | 0.174    |
+| fps                 | 400      |
+| loss                | -0.266   |
+| loss_bc             | -0       |
+| loss_f              | 0.108    |
+| loss_policy         | 0.108    |
+| loss_q              | 0.00317  |
+| mean_episode_length | 596      |
+| mean_episode_reward | 1.06     |
+| norm_grads          | 0.0304   |
+| norm_grads_policy   | 0.0233   |
+| norm_grads_q        | 0.0196   |
+| total_timesteps     | 6020     |
+----------------------------------
+----------------------------------
+| avg_norm_adj        | 0.0912   |
+| avg_norm_g          | 1.29     |
+| avg_norm_grads_f    | 1.23     |
+| avg_norm_k          | 2.46     |
+| avg_norm_k_dot_g    | 1.27     |
+| entropy             | 37.4     |
+| explained_variance  | 0.264    |
+| fps                 | 398      |
+| loss                | -0.428   |
+| loss_bc             | -0       |
+| loss_f              | -0.0787  |
+| loss_policy         | -0.0787  |
+| loss_q              | 0.0503   |
+| mean_episode_length | 601      |
+| mean_episode_reward | 1.09     |
+| norm_grads          | 0.117    |
+| norm_grads_policy   | 0.104    |
+| norm_grads_q        | 0.0542   |
+| total_timesteps     | 8020     |
+----------------------------------
+----------------------------------
+| avg_norm_adj        | 0        |
+| avg_norm_g          | 0.184    |
+| avg_norm_grads_f    | 0.184    |
+| avg_norm_k          | 2.46     |
+| avg_norm_k_dot_g    | 0.186    |
+| entropy             | 37.4     |
+| explained_variance  | 0.0889   |
+| fps                 | 400      |
+| loss                | -0.364   |
+| loss_bc             | -0       |
+| loss_f              | 0.00982  |
+| loss_policy         | 0.00982  |
+| loss_q              | 0.000816 |
+| mean_episode_length | 605      |
+| mean_episode_reward | 1.18     |
+| norm_grads          | 0.0127   |
+| norm_grads_policy   | 0.0109   |
+| norm_grads_q        | 0.00656  |
+| total_timesteps     | 10020    |
+----------------------------------
