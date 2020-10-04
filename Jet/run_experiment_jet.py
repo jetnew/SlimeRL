@@ -250,6 +250,7 @@ def experiment(algo, policy,
         model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
         with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
             f.write(str(best_params))
+        print("Saving hyperparameter optimisation log to:", os.path.join(log_dir, "hyperopt_log.csv"))
         hyperopt_log(experiment).to_csv(os.path.join(log_dir, "hyperopt_log.csv"))
         
     else:
