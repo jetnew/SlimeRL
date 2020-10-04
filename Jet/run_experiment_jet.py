@@ -287,9 +287,10 @@ if __name__ == "__main__":
     # ======= INSTRUCTIONS =========
     # 1. Change 'ppo' to the algorithm. [a2c, acer, acktr, dqn, gail, trpo, ppo]
     # 2. Change 'dnn' to the policy. [dnn, bnn]
-    
     # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
-    experiment('ppo', 'bnn', timesteps=5_000_000, record=True, tag="1")
+    algo = 'ppo'
+    policy = 'bnn'
+    
+    experiment(algo, policy, timesteps=5_000_000, record=True, tag="1")
     for i in range(2,11):
-        # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
-        experiment('ppo', 'dnn', timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
+        experiment(algo, policy, timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
