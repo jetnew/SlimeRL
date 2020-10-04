@@ -275,7 +275,7 @@ def experiment(algo, policy,
         print("Recording video of gameplay.")
         video_filename=os.path.join(log_dir, f"trained-{algo}-{policy}-{tag}.mp4")
         record_game(model=model,
-                    env=env,
+                    env=eval_env,
                     num_episodes=5,
                     video_filename=video_filename)
     
