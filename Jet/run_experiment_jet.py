@@ -250,6 +250,8 @@ def experiment(algo, policy,
         model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
         with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
             f.write(str(best_params))
+        hyperopt_log(experiment).to_csv(os.path.join(log_dir, "hyperopt_log.csv"))
+        
     else:
         with open(os.path.join(log_dir, best_params), 'r') as f:
             best_params = dict(eval(f.read()))
