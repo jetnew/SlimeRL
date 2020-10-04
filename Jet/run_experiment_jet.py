@@ -49,7 +49,7 @@ def evaluate(model, env, render=False):
             env.render()
     return total_reward
 
-def hyperopt(model, params, opt_params, trials=30):
+def hyperopt(model, params, opt_params, trials=20):
     def loss_function(p):
         m = model(params['policy'],
                   params['train_env'],
