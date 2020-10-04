@@ -147,11 +147,12 @@ def record_game(model, env, num_episodes=5, video_filename='video.mp4'):
 def experiment(algo, policy, 
                seed=3244,
                timesteps=15_000_000,
-               eval_freq=2_500,
+               eval_freq=250_000,
                eval_episodes=100,
                record=False,
                tag='0',
-               best_params=None):
+               best_params=None,
+               use_best_params=True):
     """
     algo: Choose from
         a2c, acer, acktr, dqn, trpo, ppo1
@@ -246,22 +247,26 @@ def experiment(algo, policy,
         },
     }
     
-    if best_params is None:
-        model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
-        with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
-            f.write(str(best_params))
-        print("Saving hyperparameter optimisation log to:", os.path.join(log_dir, "hyperopt_log.csv"))
-        hyperopt_log(experiment).to_csv(os.path.join(log_dir, "hyperopt_log.csv"))
-        
+    if use_best_params:
+        if best_params is None:
+            model, best_params, best_vals, experiment, exp_model = hyperopt(model, params, opt_params[algo])
+            with open(os.path.join(log_dir, "best_params.txt"), 'w') as f:
+                f.write(str(best_params))
+            print("Saving hyperparameter optimisation log to:", os.path.join(log_dir, "hyperopt_log.csv"))
+            hyperopt_log(experiment).to_csv(os.path.join(log_dir, "hyperopt_log.csv"))
+            
+        else:
+            with open(os.path.join(log_dir, best_params), 'r') as f:
+                best_params = dict(eval(f.read()))
+            model = model(params['policy'],
+                          params['train_env'],
+                          **best_params,
+                          verbose=2)
+            model.learn(total_timesteps=params['timesteps'],
+                        callback=params['eval_callback'])
     else:
-        with open(os.path.join(log_dir, best_params), 'r') as f:
-            best_params = dict(eval(f.read()))
-        model = model(params['policy'],
-                      params['train_env'],
-                      **best_params,
-                      verbose=2)
-        model.learn(total_timesteps=params['timesteps'],
-                    callback=params['eval_callback'])
+        model = model(policyFn, env, verbose=2)
+        model.learn(total_timesteps=timesteps, callback=eval_callback)
 
     model.save(os.path.join(log_dir, "trained_model"))
     print("Training complete, saved to:", os.path.join(log_dir, f"trained-{algo}-{policy}-{tag}"))
@@ -275,7 +280,6 @@ def experiment(algo, policy,
                     video_filename=video_filename)
     
     env.close()
-    return model, best_params, best_vals, experiment, exp_model
     
     
     
