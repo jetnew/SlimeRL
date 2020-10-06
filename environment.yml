@@ -184,5 +184,18 @@ dependencies:
     - threadpoolctl==2.1.0
     - tqdm==4.48.2
     - urllib3==1.25.10
+    - vs2015_runtime=14.16.27012
+    - m2w64-gcc-libs-core=5.3.0
+    - pywin32=227
+    - m2w64-libwinpthread-git=5.0.0.4634.697f757
+    - winpty=0.4.3
+    - pyreadline=2.1
+    - msys2-conda-epoch=20160418
+    - pywinpty=0.5.7
+    - wincertstore=0.2
+    - m2w64-gcc-libgfortran=5.3.0
+    - vc=14.1
+    - m2w64-gmp=6.1.0
+
 prefix: C:\Users\notes\Anaconda3\envs\slime-rl
 
