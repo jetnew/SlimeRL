@@ -9,7 +9,6 @@ dependencies:
   - matplotlib
   - tensorflow
   - numpy
-  - cpuonly
   - pytorch
   - torchvision
   - mpi4py
