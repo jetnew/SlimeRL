@@ -88,7 +88,6 @@ def hyperopt_log(experiment):
         
     return df_experiment
 
-
 def hyperparam_plot(exp_model, param_x, param_y):
     render(plot_contour(exp_model, param_x, param_y, metric_name='-reward'))
     
@@ -256,16 +255,18 @@ def experiment(algo, policy,
             hyperopt_log(experiment).to_csv(os.path.join(log_dir, "hyperopt_log.csv"))
             
         else:
-            with open(os.path.join(log_dir, best_params), 'r') as f:
+            with open(os.path.join(log_dir,"..", "acer-dnn-1",best_params), 'r') as f:
+
                 best_params = dict(eval(f.read()))
             model = model(params['policy'],
                           params['train_env'],
                           **best_params,
-                          verbose=2)
+                          verbose=0)
+            print("learning", tag)
             model.learn(total_timesteps=params['timesteps'],
                         callback=params['eval_callback'])
     else:
-        model = model(policyFn, env, verbose=2)
+        model = model(policyFn, env, verbose=0)
         model.learn(total_timesteps=timesteps, callback=eval_callback)
 
     model.save(os.path.join(log_dir, "trained_model"))
@@ -289,8 +290,9 @@ if __name__ == "__main__":
     # 2. Change 'dnn' to the policy. [dnn, bnn]
     # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
     algo = 'acer'
-    policy = 'cnn'
+    policy = 'dnn'
     
-    experiment(algo, policy, timesteps=5_000_000, record=True, tag="1")
+    experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
     for i in range(2,11):
-        experiment(algo, policy, timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
+        print(i)
+        experiment(algo, policy, timesteps=5_000_000, record=False, tag=str(i), best_params='best_params.txt')
