@@ -261,11 +261,11 @@ def experiment(algo, policy,
             model = model(params['policy'],
                           params['train_env'],
                           **best_params,
-                          verbose=2)
+                          verbose=0)
             model.learn(total_timesteps=params['timesteps'],
                         callback=params['eval_callback'])
     else:
-        model = model(policyFn, env, verbose=2)
+        model = model(policyFn, env, verbose=0)
         model.learn(total_timesteps=timesteps, callback=eval_callback)
 
     model.save(os.path.join(log_dir, "trained_model"))
@@ -291,6 +291,6 @@ if __name__ == "__main__":
     algo = 'acer'
     policy = 'bnn'
     
-    experiment(algo, policy, timesteps=5_000_000, record=True, tag="1")
+    #experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
     for i in range(2,11):
-        experiment(algo, policy, timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
+        experiment(algo, policy, timesteps=5_000_000, record=False, tag=str(i), best_params='best_params.txt')
