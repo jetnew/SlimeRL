@@ -189,7 +189,6 @@ def experiment(algo, policy,
     
     env = gym.make("SlimeVolley-v0")
     env.atari_mode = True
-    env.survival_bonus = True
     env.__init__()
     env.seed(seed)
     
