@@ -200,7 +200,7 @@ def experiment(algo, policy,
     eval_callback = EvalCallback(eval_env,
                                  best_model_save_path=log_dir,
                                  log_path=log_dir,
-                                 eval_freq=eval_freq,
+                                 eval_freq=eval_freq, 
                                  n_eval_episodes=eval_episodes)
     
     print(f"Beginning training for {algo}-{policy}-{tag}.")
@@ -290,8 +290,9 @@ if __name__ == "__main__":
     algo = 'ppo'
     policy = 'dnn'
     
-    experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
-    for i in range(2,10):
-        experiment(algo, policy, timesteps=5_000_000, record=False, tag=str(i), best_params='best_params.txt')
+    # experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
+    for i in range(2,11):
+        experiment(algo, policy, timesteps=5_000_000, record=True, tag=str(i), best_params='best_params.txt')
+
+
     
-    experiment(algo, policy, timesteps=5_000_000, record=True, tag='11', best_params='best_params.txt')
