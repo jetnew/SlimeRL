@@ -4,10 +4,9 @@ import slimevolleygym
 import numpy as np
 
 from stable_baselines import TRPO
+from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
-
-from model import BnnPolicy
 
 from shutil import copyfile
 
@@ -26,7 +25,8 @@ class SlimeVolleySelfPlayEnv(slimevolleygym.SlimeVolleyEnv):
       action, _ = self.best_model.predict(obs)
       return action
   def reset(self):
-    # load model if it's there
+    if self.best_model_save_path is not None:
+      os.makedirs(self.best_model_save_path, exist_ok=True)
     modellist = [f for f in os.listdir(LOGDIR) if f.startswith("history")]
     modellist.sort()
     if len(modellist) > 0:
@@ -87,13 +87,13 @@ if __name__=="__main__":
 
     RENDER_MODE = False
 
-    LOGDIR = "exp/self/trpo-bnn"
+    LOGDIR = "exp/self/trpo-dnn"
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
     env.seed(SEED)
     
-    model = TRPO(BnnPolicy, env, verbose=2)
+    model = TRPO(MlpPolicy, env, verbose=2)
 
     eval_callback = SelfPlayCallback(env,
         best_model_save_path=LOGDIR,
