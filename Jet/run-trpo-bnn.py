@@ -12,7 +12,7 @@ from stable_baselines.common.callbacks import EvalCallback
 from model import BnnPolicy
 
 
-NUM_TIMESTEPS = 5000#5_000_000
+NUM_TIMESTEPS = 5_000_000
 EVAL_FREQ = 100_000
 EVAL_EPISODES = 1_000
 NUM_TRIALS = 10

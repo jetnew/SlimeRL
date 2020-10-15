@@ -11,7 +11,7 @@ from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
 
 
-NUM_TIMESTEPS = 1000#5_000_000
+NUM_TIMESTEPS = 5_000_000
 EVAL_FREQ = 100_000
 EVAL_EPISODES = 1_000
 NUM_TRIALS = 10
