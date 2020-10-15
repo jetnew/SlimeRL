@@ -1,0 +1,25 @@
+Logging to exp/a2c-dnn/8
+---------------------------------
+| explained_variance | -139     |
+| fps                | 13       |
+| nupdates           | 1        |
+| policy_entropy     | 2.08     |
+| total_timesteps    | 5        |
+| value_loss         | 0.0173   |
+---------------------------------
+---------------------------------
+| explained_variance | -173     |
+| fps                | 231      |
+| nupdates           | 100      |
+| policy_entropy     | 2.08     |
+| total_timesteps    | 500      |
+| value_loss         | 0.0179   |
+---------------------------------
+----------------------------------
+| explained_variance | -1.06e+03 |
+| fps                | 237       |
+| nupdates           | 200       |
+| policy_entropy     | 2.08      |
+| total_timesteps    | 1000      |
+| value_loss         | 0.144     |
+----------------------------------

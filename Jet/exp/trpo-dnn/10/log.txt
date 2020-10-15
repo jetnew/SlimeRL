@@ -1,0 +1,19 @@
+Logging to exp/trpo-dnn/10
+********** Iteration 0 ************
+Optimizing Policy...
+Expected: 0.035 Actual: 0.035
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 656          |
+| EpRewMean               | -5           |
+| EpThisIter              | 1            |
+| EpisodesSoFar           | 1            |
+| TimeElapsed             | 3.62         |
+| TimestepsSoFar          | 1024         |
+| entloss                 | 0.0          |
+| entropy                 | 2.0734453    |
+| explained_variance_t... | -0.00861     |
+| meankl                  | 0.0059507177 |
+| optimgain               | 0.035377145  |
+| surrgain                | 0.035377145  |
+------------------------------------------

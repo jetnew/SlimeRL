@@ -1,0 +1,25 @@
+Logging to exp/a2c-bnn/10
+----------------------------------
+| explained_variance | -7.88e+03 |
+| fps                | 5         |
+| nupdates           | 1         |
+| policy_entropy     | 2.08      |
+| total_timesteps    | 5         |
+| value_loss         | 0.0106    |
+----------------------------------
+---------------------------------
+| explained_variance | -724     |
+| fps                | 179      |
+| nupdates           | 100      |
+| policy_entropy     | 2.08     |
+| total_timesteps    | 500      |
+| value_loss         | 0.0112   |
+---------------------------------
+----------------------------------
+| explained_variance | -1.16e+03 |
+| fps                | 214       |
+| nupdates           | 200       |
+| policy_entropy     | 2.08      |
+| total_timesteps    | 1000      |
+| value_loss         | 0.00603   |
+----------------------------------
