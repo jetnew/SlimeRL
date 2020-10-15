@@ -1,0 +1,91 @@
+Logging to exp/trpo-bnn/5
+********** Iteration 0 ************
+Optimizing Policy...
+Expected: 0.029 Actual: 0.011
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 573          |
+| EpRewMean               | -5           |
+| EpThisIter              | 1            |
+| EpisodesSoFar           | 1            |
+| TimeElapsed             | 7.46         |
+| TimestepsSoFar          | 1024         |
+| entloss                 | 0.0          |
+| entropy                 | 1.7886316    |
+| explained_variance_t... | -0.586       |
+| meankl                  | 0.0031888813 |
+| optimgain               | 0.011430699  |
+| surrgain                | 0.011430699  |
+------------------------------------------
+********** Iteration 1 ************
+Optimizing Policy...
+Expected: 0.042 Actual: 0.012
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 612          |
+| EpRewMean               | -5           |
+| EpThisIter              | 2            |
+| EpisodesSoFar           | 3            |
+| TimeElapsed             | 12.6         |
+| TimestepsSoFar          | 2048         |
+| entloss                 | 0.0          |
+| entropy                 | 1.7855165    |
+| explained_variance_t... | 0.0178       |
+| meankl                  | 0.0039991452 |
+| optimgain               | 0.012368819  |
+| surrgain                | 0.012368819  |
+------------------------------------------
+********** Iteration 2 ************
+Optimizing Policy...
+Expected: 0.050 Actual: 0.018
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 620          |
+| EpRewMean               | -5           |
+| EpThisIter              | 1            |
+| EpisodesSoFar           | 4            |
+| TimeElapsed             | 19.2         |
+| TimestepsSoFar          | 3072         |
+| entloss                 | 0.0          |
+| entropy                 | 1.7822716    |
+| explained_variance_t... | 0.303        |
+| meankl                  | 0.0052161235 |
+| optimgain               | 0.014494617  |
+| surrgain                | 0.014494617  |
+------------------------------------------
+********** Iteration 3 ************
+Optimizing Policy...
+Expected: 0.052 Actual: 0.015
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 616          |
+| EpRewMean               | -5           |
+| EpThisIter              | 2            |
+| EpisodesSoFar           | 6            |
+| TimeElapsed             | 26.5         |
+| TimestepsSoFar          | 4096         |
+| entloss                 | 0.0          |
+| entropy                 | 1.7831362    |
+| explained_variance_t... | 0.39         |
+| meankl                  | 0.0069660097 |
+| optimgain               | 0.01668214   |
+| surrgain                | 0.01668214   |
+------------------------------------------
+********** Iteration 4 ************
+Optimizing Policy...
+Expected: 0.049 Actual: 0.014
+Stepsize OK!
+------------------------------------------
+| EpLenMean               | 592          |
+| EpRewMean               | -5           |
+| EpThisIter              | 2            |
+| EpisodesSoFar           | 8            |
+| TimeElapsed             | 32.7         |
+| TimestepsSoFar          | 5120         |
+| entloss                 | 0.0          |
+| entropy                 | 1.7797406    |
+| explained_variance_t... | 0.44         |
+| meankl                  | 0.0081448825 |
+| optimgain               | 0.017085634  |
+| surrgain                | 0.017085634  |
+------------------------------------------

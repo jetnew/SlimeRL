@@ -220,7 +220,7 @@ def experiment(algo, policy,
         },
         'acer': {
             'gamma': [0.900, 0.999],
-            'q_coef': [0.1, 0.9],
+            'q_coef': [0.3, 0.6],
             'ent_coef': [0.001, 0.100],
             'max_grad_norm': [1, 100],
         },
@@ -239,7 +239,7 @@ def experiment(algo, policy,
             'vf_stepsize': [0.00001, 0.00100],
         },
         'ppo': {
-            'clip_param': [0.01, 0.99],
+            'clip_param': [0.01, 0.2],
             'entcoeff': [0.001, 0.100],
             'gamma': [0.900, 0.999],
             'lam': [0.90, 0.99]
@@ -290,6 +290,6 @@ if __name__ == "__main__":
     algo = 'ppo'
     policy = 'bnn'
     
-    experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
+    experiment(algo, policy, timesteps=5_000, record=False, tag="1")
     for i in range(2,11):
-        experiment(algo, policy, timesteps=5_000_000, record=False, tag=str(i), best_params='best_params.txt')
+        experiment(algo, policy, timesteps=5_000, record=False, tag=str(i), best_params='best_params.txt')
