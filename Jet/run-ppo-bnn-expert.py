@@ -5,7 +5,7 @@ import pandas as pd
 import gym
 import slimevolleygym
 
-from stable_baselines import TRPO
+from stable_baselines.ppo1 import PPO1
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
 
@@ -19,14 +19,14 @@ NUM_TRIALS = 10
 
 
 for n in range(1, NUM_TRIALS + 1):
-    LOGDIR = f"exp/trpo-bnn/{n}"
+    LOGDIR = f"exp/expert/ppo-bnn/{n}"
     logger.configure(folder=LOGDIR)
 
     env = gym.make("SlimeVolley-v0")
     env.seed(n)
 
 
-    model = TRPO(BnnPolicy, env, verbose=2)
+    model = PPO1(BnnPolicy, env, verbose=2)
 
     eval_callback = EvalCallback(env, best_model_save_path=LOGDIR, log_path=LOGDIR, n_eval_episodes=EVAL_EPISODES)
 

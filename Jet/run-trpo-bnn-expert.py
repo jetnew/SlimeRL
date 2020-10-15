@@ -5,10 +5,11 @@ import pandas as pd
 import gym
 import slimevolleygym
 
-from stable_baselines.ppo1 import PPO1
-from stable_baselines.common.policies import MlpPolicy
+from stable_baselines import TRPO
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+
+from model import BnnPolicy
 
 
 NUM_TIMESTEPS = 5_000_000
@@ -18,14 +19,14 @@ NUM_TRIALS = 10
 
 
 for n in range(1, NUM_TRIALS + 1):
-    LOGDIR = f"exp/ppo-dnn/{n}"
+    LOGDIR = f"exp/expert/trpo-bnn/{n}"
     logger.configure(folder=LOGDIR)
 
     env = gym.make("SlimeVolley-v0")
     env.seed(n)
 
 
-    model = PPO1(MlpPolicy, env, verbose=2)
+    model = TRPO(BnnPolicy, env, verbose=2)
 
     eval_callback = EvalCallback(env, best_model_save_path=LOGDIR, log_path=LOGDIR, n_eval_episodes=EVAL_EPISODES)
 
