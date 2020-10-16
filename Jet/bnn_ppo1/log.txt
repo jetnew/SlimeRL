@@ -1,2 +1,1 @@
 Logging to bnn_ppo1
-********** Iteration 0 ************
