@@ -51,7 +51,7 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         elif len(self_modellist) <= len(opp_modellist):
             opp_filename = opp_modellist[-1]
-            self.opp_model = PPO1.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
+            self.opp_model = A2C.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         print("Waiting for opponent training to complete.")
         time.sleep(5)
