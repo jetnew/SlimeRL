@@ -8,6 +8,7 @@ import slimevolleygym
 from stable_baselines import TRPO
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from model import BnnPolicy
 
@@ -23,6 +24,7 @@ for n in range(1, NUM_TRIALS + 1):
     logger.configure(folder=LOGDIR)
 
     env = gym.make("SlimeVolley-v0")
+    env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(n)
 
 

@@ -7,6 +7,7 @@ from stable_baselines.ppo1 import PPO1
 from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from shutil import copyfile
 
@@ -90,6 +91,7 @@ if __name__=="__main__":
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
+    env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(SEED)
     
     model = PPO1(MlpPolicy, env, verbose=2)

@@ -8,6 +8,7 @@ from stable_baselines import TRPO
 from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from shutil import copyfile # keep track of generations
 
@@ -86,6 +87,7 @@ if __name__=="__main__":
   logger.configure(folder=SELF_LOGDIR)
 
   env = SlimeVolleyMultiAgentEnv()
+  env = Monitor(env, LOGDIR, allow_early_resets=True)
   env.seed(SEED)
 
   # take mujoco hyperparams (but doubled timesteps_per_actorbatch to cover more steps.)
