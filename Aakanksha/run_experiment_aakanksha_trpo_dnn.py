@@ -290,7 +290,7 @@ if __name__ == "__main__":
     # 2. Change 'dnn' to the policy. [dnn, bnn]
     # CHANGE 'ppo' and 'bnn' TO YOUR EXPERIMENT ONLY.
     algo = 'trpo'
-    policy = 'dnn'
+    policy = 'bnn'
     
     experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
     for i in range(2,11):
