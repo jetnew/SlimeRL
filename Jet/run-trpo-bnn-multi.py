@@ -7,6 +7,7 @@ import numpy as np
 from stable_baselines import TRPO
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from model import BnnPolicy
 
@@ -52,7 +53,7 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         elif len(self_modellist) <= len(opp_modellist):
             opp_filename = opp_modellist[-1]
-            self.opp_model = PPO1.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
+            self.opp_model = TRPO.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         print("Waiting for opponent training to complete.")
         time.sleep(5)
@@ -87,6 +88,7 @@ if __name__=="__main__":
   logger.configure(folder=SELF_LOGDIR)
 
   env = SlimeVolleyMultiAgentEnv()
+  env = Monitor(env, SELF_LOGDIR, allow_early_resets=True)
   env.seed(SEED)
 
   # take mujoco hyperparams (but doubled timesteps_per_actorbatch to cover more steps.)

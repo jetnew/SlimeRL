@@ -6,6 +6,7 @@ import numpy as np
 from stable_baselines import A2C
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from model import BnnPolicy
 
@@ -91,6 +92,7 @@ if __name__=="__main__":
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
+    env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(SEED)
     
     model = A2C(BnnPolicy, env, verbose=2)
