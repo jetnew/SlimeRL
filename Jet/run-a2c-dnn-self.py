@@ -36,7 +36,7 @@ class SlimeVolleySelfPlayEnv(slimevolleygym.SlimeVolleyEnv):
         self.best_model_filename = filename
         if self.best_model is not None:
           del self.best_model
-        self.best_model = PPO1.load(filename, env=self)
+        self.best_model = A2C.load(filename, env=self)
     return super(SlimeVolleySelfPlayEnv, self).reset()
 
 class SelfPlayCallback(EvalCallback):
