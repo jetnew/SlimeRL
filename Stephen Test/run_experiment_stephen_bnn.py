@@ -290,6 +290,6 @@ if __name__ == "__main__":
     algo = 'acer'
     policy = 'bnn'
     
-    #experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
+    experiment(algo, policy, timesteps=5_000_000, record=False, tag="1")
     for i in range(2,11):
         experiment(algo, policy, timesteps=5_000_000, record=False, tag=str(i), best_params='best_params.txt')
