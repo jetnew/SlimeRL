@@ -26,8 +26,6 @@ class SlimeVolleySelfPlayEnv(slimevolleygym.SlimeVolleyEnv):
       action, _ = self.best_model.predict(obs)
       return action
   def reset(self):
-    if self.best_model_save_path is not None:
-      os.makedirs(self.best_model_save_path, exist_ok=True)
     modellist = [f for f in os.listdir(LOGDIR) if f.startswith("history")]
     modellist.sort()
     if len(modellist) > 0:
