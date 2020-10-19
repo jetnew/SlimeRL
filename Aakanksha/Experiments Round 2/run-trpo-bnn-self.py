@@ -7,6 +7,7 @@ from stable_baselines import TRPO
 from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
+from stable_baselines.bench import Monitor
 
 from shutil import copyfile
 
@@ -25,8 +26,6 @@ class SlimeVolleySelfPlayEnv(slimevolleygym.SlimeVolleyEnv):
       action, _ = self.best_model.predict(obs)
       return action
   def reset(self):
-    if self.best_model_save_path is not None:
-      os.makedirs(self.best_model_save_path, exist_ok=True)
     modellist = [f for f in os.listdir(LOGDIR) if f.startswith("history")]
     modellist.sort()
     if len(modellist) > 0:
@@ -36,7 +35,7 @@ class SlimeVolleySelfPlayEnv(slimevolleygym.SlimeVolleyEnv):
         self.best_model_filename = filename
         if self.best_model is not None:
           del self.best_model
-        self.best_model = PPO1.load(filename, env=self)
+        self.best_model = TRPO.load(filename, env=self)
     return super(SlimeVolleySelfPlayEnv, self).reset()
 
 class SelfPlayCallback(EvalCallback):
@@ -91,6 +90,7 @@ if __name__=="__main__":
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
+    env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(SEED)
     
     model = TRPO(MlpPolicy, env, verbose=2)
