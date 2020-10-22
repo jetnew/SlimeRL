@@ -8,6 +8,7 @@ from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
 from stable_baselines.bench import Monitor
+from stable_baselines.common.vec_env import DummyVecEnv
 
 from shutil import copyfile
 
@@ -80,16 +81,16 @@ def rollout(env, policy):
 
 if __name__=="__main__":
     SEED = 0
-    NUM_TIMESTEPS = 50_000_000
-    EVAL_FREQ = 1_000_000
-    EVAL_EPISODES = 100
-    BEST_THRESHOLD = 0.5
+    NUM_TIMESTEPS = 1_000_000#50_000_000
+    EVAL_FREQ = 1000#1_000_000
+    EVAL_EPISODES = 2#100
+    BEST_THRESHOLD = -5#0.5
 
     RENDER_MODE = False
 
     LOGDIR = "exp/self/a2c-dnn"
     logger.configure(folder=LOGDIR)
-
+    
     env = SlimeVolleySelfPlayEnv()
     env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(SEED)
