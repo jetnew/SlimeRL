@@ -1,1 +1,0 @@
-Logging to exp/self/a2c-dnn
