@@ -81,10 +81,10 @@ def rollout(env, policy):
 
 if __name__=="__main__":
     SEED = 0
-    NUM_TIMESTEPS = 1000000#50_000_000
-    EVAL_FREQ = 1000#1_000_000
-    EVAL_EPISODES = 2#100
-    BEST_THRESHOLD = -5#0.5
+    NUM_TIMESTEPS = 50_000_000
+    EVAL_FREQ = 1_000_000
+    EVAL_EPISODES = 100
+    BEST_THRESHOLD = 0.5
 
     RENDER_MODE = False
 

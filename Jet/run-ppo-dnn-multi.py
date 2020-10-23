@@ -49,8 +49,10 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
         self_modellist.sort()
     
         if len(self_modellist) == 0:
+            print("debug2:", len(self_modellist))
             return super(SlimeVolleyMultiAgentEnv, self).reset()
-        elif len(self_modellist) <= len(opp_modellist):
+        elif 0 <= len(opp_modellist) - len(self_modellist) <= 1:
+            print("debug3:", len(self_modellist), len(opp_modellist))
             opp_filename = opp_modellist[-1]
             self.opp_model = PPO1.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
             return super(SlimeVolleyMultiAgentEnv, self).reset()
@@ -76,9 +78,9 @@ class MultiAgentCallback(EvalCallback):
 if __name__=="__main__":
   SEED = 0
   NUM_TIMESTEPS = 50_000_000
-  TIMESTEPS_PER_GEN = 100_000
-  EVAL_FREQ = 100_000
-  EVAL_EPISODES = 100
+  TIMESTEPS_PER_GEN = 1000#100_000
+  EVAL_FREQ = 1000#100_000
+  EVAL_EPISODES = 1#100
   
   RENDER_MODE = False
 

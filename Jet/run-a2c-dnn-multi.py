@@ -50,7 +50,7 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
     
         if len(self_modellist) == 0:
             return super(SlimeVolleyMultiAgentEnv, self).reset()
-        elif len(self_modellist) <= len(opp_modellist):
+        elif 0 <= len(opp_modellist) - len(self_modellist) <= 1:
             opp_filename = opp_modellist[-1]
             self.opp_model = A2C.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
             return super(SlimeVolleyMultiAgentEnv, self).reset()
