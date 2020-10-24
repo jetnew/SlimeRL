@@ -19,9 +19,6 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
     super(SlimeVolleyMultiAgentEnv, self).__init__()
     self.policy = self
     self.opp_model = None
-    self.opp_model_filename = None
-    self.self_model_gen = 0
-    self.opp_model_gen = 0
   def predict(self, obs): # the policy
     if self.opp_model is None:
       return self.action_space.sample() # return a random action
@@ -31,13 +28,6 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
     
   def reset(self):
     # load model if it's there, else wait (meant to be used in parallel with opponent training)
-    os.makedirs(OPP_LOGDIR, exist_ok=True)
-    opp_modellist = [f for f in os.listdir(OPP_LOGDIR) if f.startswith("history")]
-    opp_modellist.sort()
-    
-    os.makedirs(SELF_LOGDIR, exist_ok=True)
-    self_modellist = [f for f in os.listdir(SELF_LOGDIR) if f.startswith("history")]
-    self_modellist.sort()
     
     while True:
         os.makedirs(OPP_LOGDIR, exist_ok=True)
@@ -49,11 +39,10 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
         self_modellist.sort()
     
         if len(self_modellist) == 0:
-            print("debug2:", len(self_modellist))
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         elif 0 <= len(opp_modellist) - len(self_modellist) <= 1:
-            print("debug3:", len(self_modellist), len(opp_modellist))
             opp_filename = opp_modellist[-1]
+            del self.opp_model
             self.opp_model = PPO1.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
             return super(SlimeVolleyMultiAgentEnv, self).reset()
         print("Waiting for opponent training to complete.")
@@ -78,9 +67,9 @@ class MultiAgentCallback(EvalCallback):
 if __name__=="__main__":
   SEED = 0
   NUM_TIMESTEPS = 50_000_000
-  TIMESTEPS_PER_GEN = 1000#100_000
-  EVAL_FREQ = 1000#100_000
-  EVAL_EPISODES = 1#100
+  TIMESTEPS_PER_GEN = 100_000
+  EVAL_FREQ = 100_000
+  EVAL_EPISODES = 100
   
   RENDER_MODE = False
 
