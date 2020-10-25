@@ -36,7 +36,6 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
         
         self_modellist = [f for f in os.listdir(SELF_LOGDIR) if f.startswith("history")]
         self_modellist.sort()
-        print(len(opp_modellist), len(self_modellist))
         
         # Experiment just started, so no history files
         if len(self_modellist) == 0:
@@ -60,6 +59,7 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
                     return super(SlimeVolleyMultiAgentEnv, self).reset()
             # Opponent's finished current gen training, self should continue training.
             elif len(opp_modellist) - len(self_modellist) == 1:
+                print(f"Self: Gen {len(self_modellist)}, Opp: Gen {len(opp_modellist)}. Opponent waiting for self training to complete.")
                 return super(SlimeVolleyMultiAgentEnv, self).reset()
         print(f"Self: Gen {len(self_modellist)}, Opp: Gen {len(opp_modellist)}. Waiting for opponent training to complete.")
         time.sleep(5)
