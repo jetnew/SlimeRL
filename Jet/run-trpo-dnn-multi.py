@@ -20,8 +20,6 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
     self.policy = self
     self.opp_model = None
     self.opp_model_filename = None
-    self.self_model_gen = 0
-    self.opp_model_gen = 0
   def predict(self, obs): # the policy
     if self.opp_model is None:
       return self.action_space.sample() # return a random action
@@ -30,31 +28,41 @@ class SlimeVolleyMultiAgentEnv(slimevolleygym.SlimeVolleyEnv):
       return action
     
   def reset(self):
-    # load model if it's there, else wait (meant to be used in parallel with opponent training)
-    os.makedirs(OPP_LOGDIR, exist_ok=True)
-    opp_modellist = [f for f in os.listdir(OPP_LOGDIR) if f.startswith("history")]
-    opp_modellist.sort()
-    
-    os.makedirs(SELF_LOGDIR, exist_ok=True)
-    self_modellist = [f for f in os.listdir(SELF_LOGDIR) if f.startswith("history")]
-    self_modellist.sort()
+    # Load model if it's there, else wait (meant to be used in parallel with opponent training)
+    # reset() is run multiple times throughout the experiment, not just during callbacks.
     
     while True:
-        os.makedirs(OPP_LOGDIR, exist_ok=True)
         opp_modellist = [f for f in os.listdir(OPP_LOGDIR) if f.startswith("history")]
         opp_modellist.sort()
         
-        os.makedirs(SELF_LOGDIR, exist_ok=True)
         self_modellist = [f for f in os.listdir(SELF_LOGDIR) if f.startswith("history")]
         self_modellist.sort()
-    
+        
+        # Experiment just started, so no history files
         if len(self_modellist) == 0:
             return super(SlimeVolleyMultiAgentEnv, self).reset()
-        elif len(self_modellist) <= len(opp_modellist):
-            opp_filename = opp_modellist[-1]
-            self.opp_model = TRPO.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
-            return super(SlimeVolleyMultiAgentEnv, self).reset()
-        print("Waiting for opponent training to complete.")
+        
+        # Middle of experiment
+        if len(self_modellist) > 0:
+            # If num of history files is the same, check opponent's last gen.
+            if len(self_modellist) - len(opp_modellist) == 0:
+                opp_filename = opp_modellist[-1]
+                # Opponent's last gen has no change -> Both models still training the same gen
+                if opp_filename == self.opp_model_filename:
+                    return super(SlimeVolleyMultiAgentEnv, self).reset()
+                # Opponent's last gen changed -> Opponent model has been waiting -> Load new opp.
+                elif opp_filename != self.opp_model_filename:
+                    print("Loading model:", opp_filename)
+                    self.opp_model_filename = opp_filename
+                    if self.opp_model is not None:
+                        del self.opp_model
+                    self.opp_model = PPO1.load(os.path.join(OPP_LOGDIR, opp_filename), env=self)
+                    return super(SlimeVolleyMultiAgentEnv, self).reset()
+            # Opponent's finished current gen training, self should continue training.
+            elif len(opp_modellist) - len(self_modellist) == 1:
+                print(f"Self: Gen {len(self_modellist)}, Opp: Gen {len(opp_modellist)}. Opponent waiting for self training to complete.")
+                return super(SlimeVolleyMultiAgentEnv, self).reset()
+        print(f"Self: Gen {len(self_modellist)}, Opp: Gen {len(opp_modellist)}. Waiting for opponent training to complete.")
         time.sleep(5)
             
 

@@ -1,1 +1,0 @@
-Logging to trpo-dnn-0

@@ -1,0 +1,3 @@
+Logging to exp/self/trpo-dnn
+********** Iteration 0 ************
+Optimizing Policy...

@@ -4,7 +4,7 @@ import slimevolleygym
 import numpy as np
 
 from stable_baselines import TRPO
-from stable_baselines.common.policies import MlpPolicy
+from model import BnnPolicy
 from stable_baselines import logger
 from stable_baselines.common.callbacks import EvalCallback
 from stable_baselines.bench import Monitor
@@ -86,14 +86,14 @@ if __name__=="__main__":
 
     RENDER_MODE = False
 
-    LOGDIR = "exp/self/trpo-dnn"
+    LOGDIR = "exp/self/trpo-bnn"
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
     env = Monitor(env, LOGDIR, allow_early_resets=True)
     env.seed(SEED)
     
-    model = TRPO(MlpPolicy, env, verbose=2)
+    model = TRPO(BnnPolicy, env, verbose=2)
 
     eval_callback = SelfPlayCallback(env,
         best_model_save_path=LOGDIR,
