@@ -18,7 +18,7 @@ EVAL_EPISODES = 1_000
 NUM_TRIALS = 10
 
 
-for n in range(1, NUM_TRIALS + 1):
+for n in range(7, NUM_TRIALS + 1):
     LOGDIR = f"exp/expert/ppo-dnn/{n}"
     logger.configure(folder=LOGDIR)
 
