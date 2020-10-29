@@ -87,7 +87,7 @@ if __name__=="__main__":
 
     RENDER_MODE = False
 
-    LOGDIR = "exp/self/ppo-dnn"
+    LOGDIR = "exp/self/ppo-dnn-mujoco"
     logger.configure(folder=LOGDIR)
 
     env = SlimeVolleySelfPlayEnv()
