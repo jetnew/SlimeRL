@@ -97,7 +97,7 @@ if __name__=="__main__":
   env.seed(SEED)
 
   # take mujoco hyperparams (but doubled timesteps_per_actorbatch to cover more steps.)
-    model = PPO1(MlpPolicy, env,
+  model = PPO1(MlpPolicy, env,
         timesteps_per_actorbatch=4096,
         clip_param=0.2,
         entcoeff=0.0,
