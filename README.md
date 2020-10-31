@@ -6,10 +6,10 @@ Code repository for the research project ["You Play Ball, I Play Ball: Bayesian 
 
 ## Summary
 
-In <b>[Slime Volleyball](https://github.com/hardmaru/slimevolleygym)</b>, a two-player competitive game, we investigate how <b>learning under uncertainty</b> improves AI players’ learning in 3 ways in the domain of multi-agent reinforcement learning (MARL):
+In [Slime Volleyball](https://github.com/hardmaru/slimevolleygym), a two-player competitive game, we investigate how <ins>learning under uncertainty</ins> improves AI players’ learning in 3 ways in the domain of multi-agent reinforcement learning (MARL):
 
-1. <ins>against an expert</ins>
-2. <ins>against itself</ins>
-3. <ins>against each other</ins>
+1. Against an expert
+2. Against itself
+3. Against each other
 
-We show that by <b>modelling uncertainty</b>, Bayesian methods do improve MARL training performance, and through experiments using TensorFlow Probability and Stable Baselines, we present interesting differences in agent behaviour.
+We show that <ins>by modelling uncertainty</ins>, Bayesian methods do improve MARL training performance, and through experiments using TensorFlow Probability and Stable Baselines, we present interesting differences in agent behaviour.
