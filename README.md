@@ -12,6 +12,6 @@ Click here (to be added) to try your hand against the AI and notice the differen
 
 ## About
 
-In [Slime Volleyball](https://github.com/hardmaru/slimevolleygym), a two-player competitive game, we investigate how <ins>modelling uncertainty</ins> improves AI players’ learning in 3 ways: <ins>1) against an expert</ins>, <ins>2) against itself</ins> and <ins>3) against each other</ins>, in the domain of multi-agent reinforcement learning (MARL).
+In [Slime Volleyball](https://github.com/hardmaru/slimevolleygym), a two-player competitive game, we investigate how <ins>modelling uncertainty</ins> improves AI players’ learning in 3 ways: 1) <ins>against an expert</ins>, 2) <ins>against itself</ins> and 3) <ins>against each other</ins>, in the domain of multi-agent reinforcement learning (MARL).
 
-We show that by modelling uncertainty, Bayesian methods improve MARL training in 5 ways: <ins>1) performance<ins>, </ins>2) sample efficiency</ins>, <ins>3) training stability</ins>, <ins>4) uncertainty</ins> and <ins>5) generalisability</ins>, and through experiments using TensorFlow Probability and Stable Baselines, we present interesting differences in agent behaviour.
+We show that by modelling uncertainty, Bayesian methods improve MARL training in 5 ways: 1) <ins>performance<ins>, 2) <ins>sample efficiency</ins>, 3) <ins>training stability</ins>, 4) <ins>uncertainty</ins> and 5) <ins>generalisability</ins>, and through experiments using TensorFlow Probability and Stable Baselines, we present interesting differences in agent behaviour.
