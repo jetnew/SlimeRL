@@ -1,17 +1,19 @@
 # Slime-RL
 
-## Guide for running experiment on AWS
+Code repository for the research project ["You Play Ball, I Play Ball: Bayesian Multi-Agent Reinforcement Learning for Slime Volleyball"](https://www.slime-rl.github.io). 
 
-1. Login into an available AWS instance using the credentials found [here](https://docs.google.com/spreadsheets/d/1PcbQiIeJtteGoNbuYQsMinYbKFchufB-ml94mOgabKw/). 
-2. After successful login, login to our user on AWS. Type `su 3244-2010-0008` and use the same password that you used in step 1. 
-3. If the conda environment is already setup (refer to the AWS instance spreadsheet), you can go ahead and run your experiment. 
-4. If the conda environment is not setup or if you're having issues with the environment, run `bash setup.sh` from the root of the codebase. This will setup the `slime-rl` environment and install all the required dependencies for you. 
-5. Activate the environment if not already activated by step 4 (if you skipped it) by typing `conda activate slime-rl`. 
-6. Open a linux screen session by typing `screen`. 
-7. Run the experiment
+Presented at National University of Singapore - [17th School of Computing Term Project Showcase](https://isteps.comp.nus.edu.sg/event/17th-steps/module/CS3244/project/4) (17th STePS).
 
-If you want to login to AWS and resume again, use `screen -r` and you will be able to see ur experiment running. This assumes you only have one screen. If not, you will be prompted to add the id of the screen you want to resume to from the displayed result. 
+<img src="https://user-images.githubusercontent.com/27071473/96207264-5ed17700-0f9d-11eb-80e5-8baee2408895.png">
 
-Note: if conda is not installed, please don't use the instance. We need admin rights to install conda and the TA assigned for AWS hasn't responded to our email so we don't know when he can install it for us. 
+## Demo
 
-If you face any issues, please feel free to message on the Telegram group or DM me (@raivat). 
+Click here (to be added) to try your hand against the AI and notice the difference between agents and their Bayesian counterparts!
+
+## About
+
+In [Slime Volleyball](https://github.com/hardmaru/slimevolleygym), a two-player competitive game, we investigate how <ins>modelling uncertainty</ins> improves AI players’ learning in 3 ways: 1) <ins>against an expert</ins>, 2) <ins>against itself</ins> and 3) <ins>against each other</ins>, in the domain of multi-agent reinforcement learning (MARL).
+
+We show that by modelling uncertainty, Bayesian methods improve MARL training in 5 ways: 1) <ins>performance</ins>, 2) <ins>sample efficiency</ins>, 3) <ins>training stability</ins>, 4) <ins>uncertainty</ins> and 5) <ins>generalisability</ins>, and through experiments using [TensorFlow Probability](https://www.tensorflow.org/probability/) and [Stable Baselines](https://stable-baselines.readthedocs.io/en/master/), we present interesting differences in agent behaviour.
+
+We contribute code for 3 functionalities: 1) <ins>Bayesian methods using Flipout</ins> integrated into Stable Baselines, 2) <ins>Multi-agent versioned learning framework</ins> for Stable Baselines (previously with only single-agent support) and 3) <ins>Uncertainty visualisation using agent clones</ins> for Slime Volleyball Gym.

@@ -20,7 +20,7 @@ NUM_TRIALS = 10
 
 
 for n in range(1, NUM_TRIALS + 1):
-    LOGDIR = f"exp/expert/ppo-bnn/{n}"
+    LOGDIR = f"exp/expert/ppo-bnn-mujoco/{n}"
     logger.configure(folder=LOGDIR)
 
     env = gym.make("SlimeVolley-v0")
