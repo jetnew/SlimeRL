@@ -14,11 +14,11 @@ from stable_baselines.bench import Monitor
 
 NUM_TIMESTEPS = 5_000_000
 EVAL_FREQ = 100_000
-EVAL_EPISODES = 1_000
-NUM_TRIALS = 10
+EVAL_EPISODES = 100
+NUM_TRIALS = 7
 
 
-for n in range(1, NUM_TRIALS + 1):
+for n in range(4, NUM_TRIALS + 1):
     LOGDIR = f"exp/expert/ppo-dnn-mujoco/{n}"
     logger.configure(folder=LOGDIR)
 
