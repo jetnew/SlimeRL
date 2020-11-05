@@ -1,0 +1,17 @@
+name: slime-rl
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - jupyter
+  - pandas
+  - matplotlib
+  - tensorflow
+  - numpy
+  - pytorch
+  - torchvision
+  - mpi4py
+  - pybox2d
+prefix: C:\Users\notes\Anaconda3\envs\slime-rl
+
