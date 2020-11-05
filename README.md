@@ -1,4 +1,4 @@
-# Slime-RL
+# SlimeRL
 
 Code repository for the research project ["You Play Ball, I Play Ball: Bayesian Multi-Agent Reinforcement Learning for Slime Volleyball"](https://www.slime-rl.github.io). 
 
