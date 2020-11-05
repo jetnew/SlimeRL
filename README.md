@@ -2,13 +2,13 @@
 
 Code repository for the research project ["You Play Ball, I Play Ball: Bayesian Multi-Agent Reinforcement Learning for Slime Volleyball"](https://www.slime-rl.github.io). 
 
-Presented at National University of Singapore - [17th School of Computing Term Project Showcase](https://isteps.comp.nus.edu.sg/event/17th-steps/module/CS3244/project/4) (17th STePS) ([Video showcase](https://youtu.be/AD6GiWLezWM)).
+Presented at National University of Singapore - [17th School of Computing Term Project Showcase](https://isteps.comp.nus.edu.sg/event/17th-steps/module/CS3244/project/4) (17th STePS).
 
 <img src="https://user-images.githubusercontent.com/27071473/96207264-5ed17700-0f9d-11eb-80e5-8baee2408895.png">
 
-## Demo
+## Demo & Video
 
-Click [here](https://www.slimerl.tech) to view interesting agent behaviour and notice the differences between agents and their Bayesian counterparts!
+Click [here](https://www.slimerl.tech) to view interesting agent behaviour and notice the differences between agents and their Bayesian counterparts! Click [here](https://youtu.be/AD6GiWLezWM) for a introductory video.
 
 ## About
 
