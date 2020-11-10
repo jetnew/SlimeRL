@@ -8,7 +8,7 @@ Presented at National University of Singapore - [17th School of Computing Term P
 
 ## Demo & Video
 
-Click [here](https://www.slimerl.tech) to view interesting agent behaviour and notice the differences between agents and their Bayesian counterparts! Click [here](https://youtu.be/AD6GiWLezWM) for a introductory video.
+Click [here](https://www.slimerl.tech) to view interesting agent behaviour and notice the differences between agents and their Bayesian counterparts! Click [here](https://www.youtube.com/watch?v=8qjV19gkZXc) for a introductory video.
 
 ## About
 
